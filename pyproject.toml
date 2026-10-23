@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "sistema-biblioteca-escolar"
+version = "0.1.0"
+description = "API inicial para um Sistema de Biblioteca Escolar"
+authors = ["Dupla do projeto"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+ruff = "^0.9.0"
+poethepoet = "^0.32.0"
+
+[tool.pytest.ini_options]
+testpaths = ["teste"]
+python_files = ["test_*.py", "teste_*.py"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.poe.tasks]
+dev = "fastapi dev app.py"
+test = "pytest"
+lint = "ruff check ."
+format = "ruff format ."
